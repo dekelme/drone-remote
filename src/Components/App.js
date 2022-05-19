@@ -1,6 +1,7 @@
 import './App.css';
 import ToolBar from './ToolBar';
 import JoyStick from './JoyStick'
+import Slider from './Slider';
 
 export default function App(props) {
   const [pictures, setPictures] = null
@@ -9,7 +10,7 @@ export default function App(props) {
     <div>
       <ToolBar></ToolBar>
       <div>
-        <JoyStick></JoyStick>
+        <Slider></Slider>
         <JoyStick></JoyStick>
       </div>
     </div>
