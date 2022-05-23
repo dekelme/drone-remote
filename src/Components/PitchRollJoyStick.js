@@ -7,45 +7,27 @@ let PrevPitch = 150
 export default function PitchRollJoyStick(props) {
   const handleMove = (event) => {        
     let Roll = Math.round(event.x)+350
-    
-    console.log('roll',Roll);
     let Pitch = Math.round(event.y)+150
-    console.log('pitch',Pitch);
+ 
     if(PrevRoll !== Roll){
-      fetch(`http://192.168.4.1/?R=${Roll}`, {
-        headers:{
-          "Access-Control-Allow-Origin": "*"
-        }
-      })
+      fetch(`http://192.168.4.1/?${Roll}`,)
       .then(() => PrevRoll = Roll)
     }
     if(PrevPitch !== Pitch){
-      fetch(`http://192.168.4.1/?P=${Pitch}`, {
-        headers:{
-          "Access-Control-Allow-Origin": "*"
-        }
-      })
+      fetch(`http://192.168.4.1/?${Pitch}`,)
       .then(() => PrevPitch = Pitch)
     }
 }
 
 const handleStop = (event) => {
-  console.log('handleStop')
   let Roll = PrevRoll = 350
   let Pitch = PrevPitch = 150
-  fetch(`http://192.168.4.1/?R=${Roll}`, {
-    mode: 'no-cors',
-  })
+  
+  fetch(`http://192.168.4.1/?${Roll}`)
   .then(() => {
-    fetch(`http://192.168.4.1/?P=${Pitch}`, {
-    mode: 'no-cors',
-    })
+    fetch(`http://192.168.4.1/?${Pitch}`)
   }) 
 }
-  
-  // const handleStop = (event) => {
-  //   event.type = 'stop'
-  // }
   
     return (
       <div>
