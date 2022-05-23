@@ -13,13 +13,17 @@ export default function PitchRollJoyStick(props) {
     console.log('pitch',Pitch);
     if(PrevRoll !== Roll){
       fetch(`http://192.168.4.1/?R=${Roll}`, {
-        mode: 'no-cors',
+        headers:{
+          "Access-Control-Allow-Origin": "*"
+        }
       })
       .then(() => PrevRoll = Roll)
     }
     if(PrevPitch !== Pitch){
       fetch(`http://192.168.4.1/?P=${Pitch}`, {
-        mode: 'no-cors',
+        headers:{
+          "Access-Control-Allow-Origin": "*"
+        }
       })
       .then(() => PrevPitch = Pitch)
     }
