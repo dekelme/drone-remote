@@ -1,7 +1,5 @@
 import React from 'react';
-import './App.css';
 import ToolBar from './ToolBar';
-// import Timer from './Timer'
 import PitchRollJoyStick from './PitchRollJoyStick'
 import ThrottlelJoyStick from './ThrottlelJoyStick'
 import Button from '@mui/material/Button';
