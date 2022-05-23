@@ -1,21 +1,35 @@
 import React from 'react';
 import { Joystick } from 'react-joystick-component';
+let PrevThrottle =  550;
 
 export default function PitchRollJoyStick(props) {
   const handleMove = (event) => {
-    let Throttle = event.y
-    // let Force = event.distance
-    fetch(`http://192.168.4.1/?throttle=${Throttle}}`, {
+    let Throttle = Math.round(event.y)+550
+   
+    console.log('throttle',Throttle);
+   if(PrevThrottle !== Throttle) {
+    fetch(`http://192.168.4.1/?T=${Throttle}`, {
       mode: 'no-cors',
     })
-    .then(() => new Promise(resolve => setTimeout(resolve, 10)))
+    .then(() => PrevThrottle = Throttle)
+   }
+
+    
   }
 
-  // handleStop
+  const handleStop = (event) => {
+    let Throttle = 550
+    fetch(`http://192.168.4.1/?T=${Throttle}`, {
+      mode: 'no-cors',
+    })
+    .then(() => PrevThrottle =  550)
+  }
+
+
 
   return (
     <div>
-      <Joystick size={90} baseShape="square" stickShape="squar" baseColor="DarkGrey" stickColor="Grey" move={handleMove} ></Joystick>
+      <Joystick size={90} baseShape="square" stickShape="squar" baseColor="DarkGrey" stickColor="Grey" move={handleMove} stop={handleStop} ></Joystick>
     </div>
   );
 }

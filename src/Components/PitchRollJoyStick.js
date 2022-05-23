@@ -1,18 +1,42 @@
 import React from 'react';
 // import express from 'express';
 import { Joystick } from 'react-joystick-component';
-// import Button from '@mui/material/Button';
-
-// var app = express();
+let PrevRoll = 350
+let PrevPitch = 150
 
 export default function PitchRollJoyStick(props) {
   const handleMove = (event) => {        
-    let Roll = event.x
-    let Pitch = event.y
-    fetch(`http://192.168.4.1/?roll=${Roll}&pitch=${Pitch}`, {
-      mode: 'no-cors',
-    }) 
-    .then(() => new Promise(resolve => setTimeout(resolve, 10)))
+    let Roll = Math.round(event.x)+350
+    
+    console.log('roll',Roll);
+    let Pitch = Math.round(event.y)+150
+    console.log('pitch',Pitch);
+    if(PrevRoll !== Roll){
+      fetch(`http://192.168.4.1/?R=${Roll}`, {
+        mode: 'no-cors',
+      })
+      .then(() => PrevRoll = Roll)
+    }
+    if(PrevPitch !== Pitch){
+      fetch(`http://192.168.4.1/?P=${Pitch}`, {
+        mode: 'no-cors',
+      })
+      .then(() => PrevPitch = Pitch)
+    }
+}
+
+const handleStop = (event) => {
+  console.log('handleStop')
+  let Roll = PrevRoll = 350
+  let Pitch = PrevPitch = 150
+  fetch(`http://192.168.4.1/?R=${Roll}`, {
+    mode: 'no-cors',
+  })
+  .then(() => {
+    fetch(`http://192.168.4.1/?P=${Pitch}`, {
+    mode: 'no-cors',
+    })
+  }) 
 }
   
   // const handleStop = (event) => {
@@ -21,8 +45,7 @@ export default function PitchRollJoyStick(props) {
   
     return (
       <div>
-        <Joystick size={100} baseColor="#db830f" stickColor="#a35405" move={handleMove}  ></Joystick>
-        {/* <Button variant="contained">Contained</Button> */}
+        <Joystick size={100} baseColor="#db830f" stickColor="#a35405" move={handleMove} stop={handleStop}  ></Joystick>
       </div>
     );
   }
