@@ -7,13 +7,13 @@ import Button from '@mui/material/Button';
 
 export default function App(props) {
   const takeOff = (event) => {
-    fetch(`http://192.168.4.1/?888`, {
+    fetch(`http://192.168.4.1/?t`, {
         mode: 'no-cors',
       })
   }
 
   const land = (event) => {
-    fetch(`http://192.168.4.1/?999`, {
+    fetch(`http://192.168.4.1/?s`, {
         mode: 'no-cors',
       })
   }
