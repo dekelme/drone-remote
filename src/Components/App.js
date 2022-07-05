@@ -1,8 +1,7 @@
 import React from 'react';
 import ToolBar from './ToolBar';
-import PitchJoyStick from './PitchJoyStick'
 import ThrottlelJoyStick from './ThrottlelJoyStick'
-import RollJoyStick from './RollJoyStick'
+import RollPitchJoyStick from './RollPitchJoyStick'
 import Button from '@mui/material/Button';
 
 export default function App(props) {
@@ -11,12 +10,26 @@ export default function App(props) {
         mode: 'no-cors',
       })
   }
-
+  // const reduce = (event) => {
+  //   fetch(`http://192.168.4.1/?R`, {
+  //       mode: 'no-cors',
+  //     })
+  // }
   const land = (event) => {
     fetch(`http://192.168.4.1/?s`, {
         mode: 'no-cors',
       })
   }
+  // const test = (event) => {
+  //   fetch(`http://192.168.4.1/?T`, {
+  //       mode: 'no-cors',
+  //     })
+  // }
+  // const pulse = (event) => {
+  //   fetch(`http://192.168.4.1/?P`, {
+  //       mode: 'no-cors',
+  //     })
+  // }
   
   return (
     <div  style={{height: '100%'}}>
@@ -24,13 +37,15 @@ export default function App(props) {
       <div>  
       <div style={{display:"flex", justifyContent:'space-around',alignItems: 'center',    minHeight: '280px'}}>
         <ThrottlelJoyStick></ThrottlelJoyStick>
-        <PitchJoyStick></PitchJoyStick>
-        <RollJoyStick></RollJoyStick>
+        <RollPitchJoyStick></RollPitchJoyStick>
         </div>
- 
         <div style={{display:"flex",justifyContent: 'center'}}>
-          <Button variant="outlined" onClick={takeOff}>TakeOff</Button>
-          <Button variant="outlined" onClick={land}>Land</Button>
+          {/* <Button style={{border:"2px solid #EB7500" , variant:"outlined", color:"#EB7500", marginRight:"1%"}} onClick={test}>Test</Button> */}
+          <Button style={{border:"2px solid #EB7500" , variant:"outlined", color:"#EB7500", marginLeft:"1%", marginRight:"1%"}} onClick={takeOff}>TakeOff</Button>
+          {/* <Button style={{border:"2px solid #EB7500" , variant:"outlined", color:"#EB7500", marginLeft:"1%"}} variant="outlined" onClick={reduce}>-10</Button> */}
+          <Button style={{border:"2px solid #EB7500" , variant:"outlined", color:"#EB7500", marginLeft:"1%"}} variant="outlined" onClick={land}>Land</Button>
+          {/* <Button style={{border:"2px solid #EB7500" , variant:"outlined", color:"#EB7500", marginLeft:"1%"}} variant="outlined" onClick={pulse}>Pulse</Button> */}
+
         </div>
         </div>
 

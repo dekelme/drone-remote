@@ -1,5 +1,7 @@
 import React from 'react';
 import { Joystick } from 'react-joystick-component';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 let PrevThrottle = 550;
 
 export default function ThrottlelJoyStick(props) {
@@ -47,9 +49,13 @@ export default function ThrottlelJoyStick(props) {
   }
 
 return (
-  <div>
-    <h1>Throttle</h1>
-    <Joystick size={90} baseShape="square" stickShape="squar" baseColor="DarkGrey" stickColor="Grey" move={handleMove} stop={handleStop}  ></Joystick>
+  <div style={{display: "flex", flexDirection:"column", alignItems:"center",}}>
+    <KeyboardArrowUpIcon style={{color:"Grey"}}></KeyboardArrowUpIcon>
+    <div style={{borderRadius:"50px", backgroundColor:"lightGrey", paddingTop:"60%", paddingBottom:"60%"}}>
+      <Joystick size={50} baseColor="Grey" stickColor="Grey" move={handleMove} stop={handleStop}  ></Joystick>
+    </div>
+    <KeyboardArrowDownIcon style={{color:"Grey"}}></KeyboardArrowDownIcon>
   </div>
+  
 );
 }

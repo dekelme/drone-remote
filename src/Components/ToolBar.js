@@ -13,7 +13,7 @@ var date = new Date();
 var time = moment(date).format(formatter);
 
   return (
-    <AppBar position="static">
+    <AppBar  style={{ background: '#EB7500' }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
