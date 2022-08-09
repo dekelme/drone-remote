@@ -1,14 +1,11 @@
 import React from 'react';
 import { Joystick } from 'react-joystick-component';
+import './style.css';
 let PrevPitch = 150
+
 export default function PitchJoyStick(props) {
-  // const mapValPitch = (input) => { 
-  //   let output = 130 + ((170 - 130) / (200 - 100)) * (input - 100);
-  //   return output
-  // }
   const handleMove = (event) => {
     let Pitch = Math.round(event.y) + 150
-    // Pitch =  Math.round(mapValPitch(Pitch))
     if (PrevPitch === Pitch) {
       return
     }
@@ -31,8 +28,6 @@ export default function PitchJoyStick(props) {
   }
 } 
   
-      
-
   const handleStop = (event) => {
     fetch(`http://192.168.4.1/?h`, {
       mode: 'no-cors',

@@ -4,17 +4,14 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import './style.css';
 let PrevRoll = 350
 let PrevPitch = 150
 export default function RollJoyStick(props) {
-  // const mapValRoll = (input) => { 
-  //   let output = 330 + ((370 - 330) / (400 - 300)) * (input - 300);
-  //   return output
-  // }
+
   const handleMove = (event) => {
     let Roll = Math.round(event.x) + 350
     let Pitch = Math.round(event.y) + 150
-    // Roll =  Math.round(mapValRoll(Roll))
     if (PrevRoll === Roll || PrevPitch === Pitch) {
       return
     }
@@ -64,12 +61,12 @@ export default function RollJoyStick(props) {
   }
 
   return (
-    <div style={{display: "flex", alignItems:"center"}}>
+    <div className="rollPitch">
       <ChevronLeftIcon style={{color: "grey"}}></ChevronLeftIcon>
-      <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-      <KeyboardArrowUpIcon style={{color: "grey"}}></KeyboardArrowUpIcon>
-      <Joystick size={90} baseColor="lightGrey" stickColor="Grey" move={handleMove} stop={handleStop}  ></Joystick>
-      <KeyboardArrowDownIcon style={{color: "grey"}}></KeyboardArrowDownIcon>
+      <div className="vArrows">
+        <KeyboardArrowUpIcon style={{color: "grey"}}></KeyboardArrowUpIcon>
+        <Joystick size={90} baseColor="lightGrey" stickColor="Grey" move={handleMove} stop={handleStop}  ></Joystick>
+        <KeyboardArrowDownIcon style={{color: "grey"}}></KeyboardArrowDownIcon>
       </div>
       <ChevronRightIcon style={{color: "grey"}}></ChevronRightIcon>
     </div>

@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import moment from 'moment';
 import Clock from 'react-live-clock';
+import './style.css';
 
 const ResponsiveAppBar = () => {
 
